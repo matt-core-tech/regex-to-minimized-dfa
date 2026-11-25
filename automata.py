@@ -13,6 +13,7 @@ Implements the classic compiler theory transformation pipeline:
 Zero external dependencies - implemented using Python standard library.
 """
 
+import sys
 from collections import defaultdict, deque
 from typing import Set, Dict, List, FrozenSet, Optional, Tuple
 
@@ -75,8 +76,10 @@ class NFA:
         print("Transitions:")
         for s in sorted_states:
             for sym, tgts in s.transitions.items():
+                disp_sym = "ε" if sys.stdout.encoding and "utf" in sys.stdout.encoding.lower() else "eps"
+                sym_str = disp_sym if sym == EPSILON else sym
                 for t in sorted(tgts, key=lambda x: x.id):
-                    print(f"  {s} -[{sym}]-> {t}")
+                    print(f"  {s} -[{sym_str}]-> {t}")
 
 
 # ---------------------- REGEX PARSER ----------------------

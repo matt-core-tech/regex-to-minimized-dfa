@@ -85,7 +85,7 @@ def interactive_repl():
 
             accepted = simulate_dfa(min_dfa, test_str)
             status = "ACCEPT" if accepted else "REJECT"
-            symbol = "✓" if accepted else "✗"
+            symbol = "+" if accepted else "-"
             print(f"    [{symbol} {status}] string='{test_str}'")
 
 
@@ -105,7 +105,7 @@ def main():
             for s in args.test:
                 accepted = simulate_dfa(min_dfa, s)
                 status = "ACCEPT" if accepted else "REJECT"
-                symbol = "✓" if accepted else "✗"
+                symbol = "+" if accepted else "-"
                 print(f"  [{symbol} {status}] '{s}'")
     else:
         interactive_repl()
